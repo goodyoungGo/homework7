@@ -39,6 +39,7 @@ void printList(headNode* h);
 
 int main()
 {
+	printf("[----- [Goh Geon Young]  [2020017027] -----]\n");
 	char command;
 	int key;
 	headNode* headnode=NULL;
@@ -158,26 +159,22 @@ int insertNode(headNode* h, int key) {
 	pTemp->link = NULL;
 	listNode* node = h->first;
 	listNode* prev = NULL;
-
 	// 리스트가 비어있을 경우
 	if (node==NULL){
 		h->first = pTemp;
 		return 0;
 	}
-
 	// 리스트 검색
 	while(node != NULL && node->key <=key){
 		prev = node;
 		node = node->link; // 다음 연결 리스트
 	}
-
 	// 맨 앞 노드에 삽입을 할 때
 	if (prev==NULL){ 
 		pTemp->link = h->first; // node로 변경해도 된다.
 		h->first = pTemp; // node로 변경하면 안된다. -> node 함수 내의 변수이기 때문에
 		return 0;
 	}
-
 	// 그 외 삽입
 	pTemp->link = prev->link;
 	prev->link = pTemp;
