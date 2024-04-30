@@ -295,7 +295,17 @@ int deleteLast(headNode* h) {
  * 리스트의 링크를 역순으로 재 배치
  */
 int invertList(headNode* h) {
-
+	listNode * trail = NULL;
+	listNode * middle = NULL;
+	listNode * lead = h->first;
+	// 리스트 역순으로 재배치
+	while(lead!=NULL){
+		trail = middle;
+		middle = lead;
+		lead = lead->link;
+		middle->link = trail;
+	}
+	h->first = middle; // head node 변경해주기
 	return 0;
 }
 
